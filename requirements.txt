@@ -1,2 +1,7 @@
 fastapi
 uvicorn
+requests
+together
+python-dotenv
+redis
+qdrant-client

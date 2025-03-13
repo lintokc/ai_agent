@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: crypto_ai_agent
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
+  redis:
+    image: redis/redis-stack:latest
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
+    restart: always
+
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant_db
+    ports:
+      - "6333:6333"
+    restart: always
